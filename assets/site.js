@@ -168,7 +168,7 @@
   mark('.contact-list > div', 'left', .12); mark('.map-wrap', 'right'); mark('.ground', 'fade');
   mark('.shead', 'fade'); mark('.gtools, .stages', 'fade'); mark('.gal figure', 'zoom', .06);
   mark('.wcard', '', .12); mark('.marquee', 'fade'); mark('.scopy', 'left'); mark('.collage', 'zoom');
-  mark('.svc-media', 'zoom'); mark('.svc-copy', 'right'); mark('.enq > *', '', .15); mark('.more', 'fade');
+  mark('.svc-media', 'zoom'); mark('#office .ba figure', 'zoom', .1); mark('.svc-copy', 'right'); mark('.enq > *', '', .15); mark('.more', 'fade');
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
     { threshold: .12, rootMargin: '0px 0px -40px 0px' });
   $$('.rv').forEach(el => io.observe(el));

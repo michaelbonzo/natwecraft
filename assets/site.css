@@ -877,3 +877,13 @@ dialog.lb img{animation:lbIn .4s ease}
 /* filtered galleries: even tiles so no gaps open up */
 .gal.filtered figure{grid-column:auto; grid-row:auto}
 @media (max-width:900px){ .gal.filtered figure{grid-column:auto} }
+
+/* ---------- Our new home: equal before (left) / after (right) grid ---------- */
+#office .ba{display:grid; grid-template-columns:1fr 1fr; gap:12px; align-content:start}
+#office .ba-h{margin:0 0 2px; font-size:.66rem; font-weight:600; letter-spacing:.3em; color:var(--haze); display:flex; align-items:center; gap:10px}
+#office .ba-h::before{content:""; width:22px; height:1px; background:var(--haze)}
+#office .ba-h.after{color:var(--yellow)}
+#office .ba-h.after::before{background:var(--yellow)}
+#office .ba figure{margin:0; aspect-ratio:4/3; overflow:hidden; background:var(--mist)}
+#office .ba img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s cubic-bezier(.2,.65,.3,1)}
+#office .ba figure:hover img{transform:scale(1.05)}
