@@ -363,8 +363,31 @@
     from.close(); root.classList.add('pj-open'); to.showModal(); to._go && to._go(0, true);
   }));
   /* open a project window straight from a link such as projects.html#sast */
-  const fromHash = { '#luveve': 'pjLuveve', '#fernhill': 'pjFernhill', '#commissioning': 'pjCommission', '#servicing': 'pjServicing', '#sast': 'pjSast' }[location.hash];
+  const fromHash = { '#luveve': 'pjLuveve', '#fernhill': 'pjFernhill', '#commissioning': 'pjCommission', '#servicing': 'pjServicing', '#sast': 'pjSast', '#emganwini': 'pjEmganwini' }[location.hash];
   if (fromHash && document.getElementById(fromHash)) setTimeout(() => openPj(fromHash), 900);
+
+  /* ================= CUSTOM DROPDOWN (white list, yellow highlight) ================= */
+  $$('[data-dd]').forEach(dd => {
+    const btn = $('.dd-btn', dd), list = $('.dd-list', dd), input = $('input', dd), val = $('span', btn);
+    const opts = $$('[role="option"]', list);
+    let hi = Math.max(0, opts.findIndex(o => o.getAttribute('aria-selected') === 'true'));
+    const mark = k => { hi = (k + opts.length) % opts.length; opts.forEach((o, j) => o.classList.toggle('hi', j === hi)); list.setAttribute('aria-activedescendant', opts[hi].id); opts[hi].scrollIntoView({ block: 'nearest' }); };
+    const open = o => { dd.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); if (o) { mark(hi); list.focus(); } };
+    const pick = k => { opts.forEach((o, j) => o.setAttribute('aria-selected', j === k)); hi = k; val.textContent = input.value = opts[k].textContent; open(false); btn.focus(); };
+    btn.addEventListener('click', () => open(!dd.classList.contains('open')));
+    btn.addEventListener('keydown', e => { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(true); } });
+    opts.forEach((o, k) => { o.addEventListener('click', () => pick(k)); o.addEventListener('pointermove', () => mark(k)); });
+    list.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); mark(hi + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); mark(hi - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); mark(0); }
+      else if (e.key === 'End') { e.preventDefault(); mark(opts.length - 1); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(hi); }
+      else if (e.key === 'Escape') { e.stopPropagation(); open(false); btn.focus(); }
+      else if (e.key === 'Tab') open(false);
+    });
+    document.addEventListener('pointerdown', e => { if (!dd.contains(e.target)) open(false); });
+  });
 
   /* ================= ENQUIRY FORM → email ================= */
   const form = $('#enquiry');

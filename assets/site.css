@@ -887,3 +887,56 @@ dialog.lb img{animation:lbIn .4s ease}
 #office .ba figure{margin:0; aspect-ratio:4/3; overflow:hidden; background:var(--mist)}
 #office .ba img{width:100%; height:100%; object-fit:cover; display:block; transition:transform 1.2s cubic-bezier(.2,.65,.3,1)}
 #office .ba figure:hover img{transform:scale(1.05)}
+
+/* =====================================================================
+   NOVEMBER UPDATES
+   ===================================================================== */
+/* big type band: capitalise each word ("We Deliver Water & Power And Land Servicing") */
+.bt span{text-transform:capitalize}
+
+/* hero wheel centre: "EPC SERVICES" */
+.emblem-core{gap:4px}
+.emblem-core b,.emblem-core .svc-lbl{display:block; font-family:var(--display); font-size:clamp(1.5rem,2.3vw,2.1rem); font-weight:700; line-height:1; letter-spacing:.08em; padding-left:.08em; color:transparent; -webkit-text-stroke:1px var(--bone)}
+
+/* larger logo in the top bar */
+#nav{height:76px}
+.brand img{height:52px}
+@media (max-width:520px){ #nav{height:68px} .brand img{height:42px} }
+@media (max-width:420px){ .brand img{height:36px; max-width:46vw} }
+
+/* larger body / paragraph text across all pages */
+body{font-size:1.06rem}
+.kicker,.shead p{font-size:1.08rem}
+.pj-page .kicker{font-size:1.14rem}
+.hero-foot p,.points p,.ms .what{font-size:1.06rem}
+.story,.since p,.contact-list p,.hours,.ft-cols p{font-size:1.04rem}
+.vmo p,.sectors p,.fbody p,.wbody p,.water ul,.pj-facts,.pj-time li{font-size:1rem}
+.item p,.facts,.note,.form .hint,.ftnote{font-size:.95rem}
+.scopy p,.svc-copy p,.phero .lede,.pj-info .lead{font-size:1.1rem}
+.svc-copy li{font-size:1.04rem}
+table{font-size:.98rem}
+.form input,.form select,.form textarea{font-size:1.05rem}
+.ft-bot{font-size:.82rem}
+@media (max-width:700px){
+  .kicker,.shead p,.scopy p,.svc-copy p,.phero .lede{font-size:1.02rem}
+  .table-wrap table{font-size:.95rem}
+}
+
+/* "We build foundations" band: photo and yellow panel fill the full section height */
+.parband{padding:0}
+
+/* ---------- enquiry form: custom service dropdown (white list, yellow highlight) ---------- */
+.form .fld{display:grid; gap:8px}
+.form .fld .lbl{font-size:.62rem; letter-spacing:.26em; text-transform:uppercase; color:var(--haze)}
+.dd{position:relative}
+.dd-btn{width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; text-align:left; font:300 1.05rem/1.5 var(--sans); color:var(--ink); background:#fff; border:1px solid #fff; padding:14px 16px; cursor:pointer; transition:border-color .25s, box-shadow .25s}
+.dd-btn::after{content:""; flex:none; width:9px; height:9px; border-right:2px solid var(--night); border-bottom:2px solid var(--night); transform:translateY(-3px) rotate(45deg); transition:transform .25s}
+.dd.open .dd-btn::after{transform:translateY(2px) rotate(-135deg)}
+.dd-btn:focus-visible,.dd.open .dd-btn{outline:0; border-color:var(--yellow); box-shadow:0 0 0 2px var(--yellow)}
+.dd-list{position:absolute; z-index:30; left:0; right:0; top:calc(100% + 6px); margin:0; padding:6px; list-style:none; background:#fff; border:1px solid #E3E5EE; box-shadow:0 24px 50px -18px rgba(0,0,0,.55); max-height:300px; overflow:auto; display:none}
+.dd.open .dd-list{display:block}
+.dd-list:focus{outline:0}
+.dd-list li{padding:12px 14px; font:400 1rem/1.4 var(--sans); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:12px}
+.dd-list li.hi{background:var(--yellow); color:var(--night)}
+.dd-list li[aria-selected="true"]{font-weight:500}
+.dd-list li[aria-selected="true"]::after{content:""; width:6px; height:11px; border-right:2px solid var(--night); border-bottom:2px solid var(--night); transform:rotate(45deg) translateY(-2px)}
