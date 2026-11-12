@@ -55,12 +55,6 @@
   <div class="num" aria-hidden="true">01</div>
   <h2 class="title">GET IN TOUCH</h2>
   <p class="kicker">Call, WhatsApp, email or visit our Bulawayo head office.</p>
-  <div class="counters">
-    <div class="cell"><b data-roll="9">9</b><span>Completed contracts</span></div>
-    <div class="cell"><b data-roll="3">3</b><span>Current contracts</span></div>
-    <div class="cell"><b data-roll="19">19</b><span>Owned fleet units</span></div>
-    <div class="cell"><b data-roll="8" data-suffix="+">8+</b><span>Major clients</span></div>
-  </div>
   <div class="cta-row">
     <a class="pill" href="#enquire">SEND AN ENQUIRY</a>
     <a class="pill ghost" href="tel:+263292270888">CALL +263 292 270 888</a>
@@ -91,12 +85,13 @@
       <label>Company<input name="company" autocomplete="organization"></label>
       <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
       <label>Email<input name="email" type="email" required autocomplete="email"></label>
-      <label class="full">Service
-        <select name="service">
-          <option>Water &amp; Wastewater</option><option>Land Development</option><option>Transformers &amp; Substations</option>
-          <option>Earthmoving Hire</option><option>Lifting &amp; Transport</option><option>Other</option>
-        </select>
-      </label>
+      <div class="full fld"><span class="lbl" id="svcLbl">Service</span>
+        <div class="dd" data-dd>
+          <input type="hidden" name="service" value="Waste & Water Treatment">
+          <button type="button" class="dd-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="svcLbl svcVal"><span id="svcVal">Waste &amp; Water Treatment</span></button>
+          <ul class="dd-list" role="listbox" tabindex="-1" aria-labelledby="svcLbl"><li role="option" id="svcOpt0" aria-selected="true">Waste &amp; Water Treatment</li><li role="option" id="svcOpt1" aria-selected="false">Land Development</li><li role="option" id="svcOpt2" aria-selected="false">Transformers &amp; Substations</li><li role="option" id="svcOpt3" aria-selected="false">Equipment Hire</li><li role="option" id="svcOpt4" aria-selected="false">Lifting &amp; Transport</li><li role="option" id="svcOpt5" aria-selected="false">Other</li></ul>
+        </div>
+      </div>
       <label class="full">Project details<textarea name="message" required placeholder="Location, scope, timelines, equipment needed…"></textarea></label>
       <div class="full row-end"><span class="hint">Prefer to talk? Call +263 292 270 888.</span><button class="pill" type="submit">SEND ENQUIRY <span class="ar">&rarr;</span></button></div>
     </form>
